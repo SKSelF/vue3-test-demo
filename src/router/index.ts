@@ -18,9 +18,17 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/mobile-home',
-      name: 'mobile-home',
-      component: () => import('@/views/MobileHomeView.vue')
+      path: '/mobile',
+      name: 'mobile',
+      component: () => import('@/views/mobile/MobileLayout.vue'),
+      redirect: '/mobile/home',
+      children: [
+        {
+          path: '/mobile/home',
+          name: 'mobile-home',
+          component: () => import('@/views/mobile/MobileHome.vue')
+        }
+      ]
     }
   ]
 })
